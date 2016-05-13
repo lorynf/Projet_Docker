@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  j2e:
+      build: ./j2e/.
+      volumes:
+       - ./j2e:/app
+      ports:
+        - "8080:8080"
+
+  dotnet:
+    build: ./dotNet/.
+    volumes:
+      - ./dotNet:/app
+    network_mode: "service:j2e"
